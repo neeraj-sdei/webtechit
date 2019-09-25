@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Add client</title>
+      <style>
+         #form {
+         background-color: #FFF;
+         height: 600px;
+         width: 600px;
+         margin-right: auto;
+         margin-left: auto;
+         margin-top: 0px;
+         border-top-left-radius: 10px;
+         border-top-right-radius: 10px;
+         padding: 0px;
+         text-align:center;
+         }
+         label {
+         font-family: Georgia, "Times New Roman", Times, serif;
+         font-size: 18px;
+         color: #333;
+         height: 20px;
+         width: 200px;
+         margin-top: 10px;
+         margin-left: 10px;
+         text-align: right;
+         margin-right:15px;
+         float:left;
+         }
+         input {
+         height: 20px;
+         width: 300px;
+         border: 1px solid #000;
+         margin-top: 10px;
+         }
+      </style>
+   </head>
+   <body>
+      <form action="/add-client/" method="post">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <input type="submit" value="Submit">
+      </form>
+   </body>
+</html>

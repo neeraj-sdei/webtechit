@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>List clients</title>
+      <style>
+         table {
+         font-family: arial, sans-serif;
+         border-collapse: collapse;
+         width: 100%;
+         }
+         td, th {
+         border: 1px solid #dddddd;
+         text-align: left;
+         padding: 8px;
+         }
+         tr:nth-child(even) {
+         background-color: #dddddd;
+         }
+      </style>
+   </head>
+   <body>
+      <table>
+         <tr>
+            <form action="/list/" method="get">
+               <td><input name="name" type="text" placeholder="Search Name" value={{name}}></td>
+               <td><input name="email" type="text" placeholder="Search Email" value={{email}}></td>
+               <td><input name="phone" type="text" placeholder="Search phone" value={{phone}}></td>
+               <td><input name="suburb" type="text" placeholder="Search suburb" value={{suburb}}></td>
+               <td><input type="submit" value="Search"></td>
+            </form>
+         </tr>
+         <tr>
+             <th><a href="/list/?sort=client_name">Client Name</a></th>
+             <th><a href="/list/?sort=email">Email</a></th>
+             <th><a href="/list/?sort=phone_number">Phone Number</a></th>
+             <th><a href="/list/?sort=suburb">Suburb</a></th>
+            <th>Edit</th>
+         </tr>
+         {% for client in client_list %}
+         <tr>
+            <td>{{ client.client_name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.phone_number }}</td>
+            <td>{{ client.suburb }}</td>
+            <td><a href="/client/{{client.id}}/edit">Edit</a></td>
+         </tr>
+         {% empty %}
+         <tr>Sorry, no clients in this list.</tr>
+         {% endfor %}
+      </table>
+   </body>
+</html>
